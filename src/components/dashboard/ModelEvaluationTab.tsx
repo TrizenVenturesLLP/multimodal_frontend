@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Cpu, Zap, Layers, Activity, Database, ShieldCheck } from "lucide-react";
+import { Cpu, Zap, Layers, Activity, Database, ShieldCheck, Users, BookOpen } from "lucide-react";
+import DatasetMetrics from "./DatasetMetrics";
 
 const ModelEvaluationTab = () => {
   const metrics = [
@@ -76,6 +76,11 @@ const ModelEvaluationTab = () => {
         <p className="text-sm text-muted-foreground max-w-md mx-auto">
           All analysis sessions are hashed and cached for reproducibility and long-term behavioral tracking across your profile.
         </p>
+      </div>
+
+      {/* Comprehensive Dataset Breakdown */}
+      <div className="pt-12 border-t border-border/30">
+        <DatasetMetrics />
       </div>
     </div>
   );

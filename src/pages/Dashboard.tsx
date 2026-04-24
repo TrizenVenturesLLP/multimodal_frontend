@@ -188,8 +188,8 @@ const Dashboard = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl px-4">
                 {[
-                  { icon: Mic, label: "Audio Analysis", color: "text-blue-500", bg: "bg-blue-500/10" },
                   { icon: Video, label: "Video Analysis", color: "text-emerald-500", bg: "bg-emerald-500/10" },
+                  { icon: Mic, label: "Audio Analysis", color: "text-blue-500", bg: "bg-blue-500/10" },
                   { icon: MessageSquare, label: "Textual Depth", color: "text-purple-500", bg: "bg-purple-500/10" }
                 ].map((m, i) => (
                   <div key={i} className={`p-4 rounded-2xl ${m.bg} border border-${m.color.split('-')[1]}-500/20 flex flex-col items-center gap-3`}>
@@ -219,9 +219,9 @@ const Dashboard = () => {
                   <div className="flex flex-col gap-3">
                   {[
                     { id: 'overview', label: 'Analysis Overview', sub: 'User Performance', icon: LayoutDashboard },
-                    { id: 'audio-analysis', label: 'Audio Evaluation', sub: 'User Performance', icon: Mic, scroll: true },
-                    { id: 'video-analysis', label: 'Video Evaluation', sub: 'User Performance', icon: Video, scroll: true },
-                    { id: 'text-analysis', label: 'Text Evaluation', sub: 'User Performance', icon: MessageSquare, scroll: true },
+                    { id: 'video-analysis', label: 'Video Evaluation', sub: 'Model & Dataset', icon: Video },
+                    { id: 'audio-analysis', label: 'Audio Evaluation', sub: 'Model & Dataset', icon: Mic },
+                    { id: 'text-analysis', label: 'Text Evaluation', sub: 'Model & Dataset', icon: MessageSquare },
                   ].map((tab) => (
                     <button
                       key={tab.id}
@@ -262,12 +262,24 @@ const Dashboard = () => {
                 {/* Main Content Area */}
                 <div className="flex-1 md:pl-10 py-12 space-y-8">
                   <div className="mb-8">
-                    <h2 className="text-4xl font-black tracking-tight mb-2">Analysis Dashboard</h2>
-                    <p className="text-muted-foreground">Comprehensive behavioral intelligence for <span className="text-primary font-bold">{results.filename || "Session"}</span></p>
+                    <h2 className="text-4xl font-black tracking-tight mb-2">
+                      {activeTab === 'text-analysis' ? 'Text Model Evaluation Metrics' : 
+                       activeTab === 'video-analysis' ? 'Video Model Evaluation Metrics' :
+                       activeTab === 'audio-analysis' ? 'Audio Model Evaluation Metrics' :
+                       'Analysis Dashboard'}
+                    </h2>
+                    <p className="text-muted-foreground">
+                      {activeTab === 'text-analysis' || activeTab === 'audio-analysis' || activeTab === 'video-analysis'
+                        ? 'Quantitative evaluation of model performance, reliability and research methodology' 
+                        : <>Comprehensive behavioral intelligence for <span className="text-primary font-bold">{results.filename || "Session"}</span></>}
+                    </p>
                   </div>
 
                   <div className="min-h-[600px]">
                     {activeTab === 'overview' && <OverviewTab results={results} />}
+                    {activeTab === 'audio-analysis' && <VocalTab showDatasetInfo={true} showPerformanceResults={false} />}
+                    {activeTab === 'video-analysis' && <VisualTab showDatasetInfo={true} showPerformanceResults={false} />}
+                    {activeTab === 'text-analysis' && <TextTab showDatasetInfo={true} showPerformanceResults={false} />}
                   </div>
                 </div>
               </div>

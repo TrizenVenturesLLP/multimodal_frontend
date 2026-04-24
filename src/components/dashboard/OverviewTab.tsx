@@ -19,13 +19,13 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
   const dynamicInsights = useMemo(() => {
     const insights = [];
 
-    // Vocal Insight
-    if (results.audioScore > 70) insights.push({ type: "positive", text: "Exceptional vocal variety and confidence detected." });
-    else insights.push({ type: "info", text: "Maintain steady vocal energy during technical segments." });
-
     // Visual Insight
     if (results.videoScore > 70) insights.push({ type: "positive", text: "Strong professional composure and facial engagement." });
     else insights.push({ type: "info", text: "Increasing micro-expressions of enthusiasm could boost rapport." });
+
+    // Vocal Insight
+    if (results.audioScore > 70) insights.push({ type: "positive", text: "Exceptional vocal variety and confidence detected." });
+    else insights.push({ type: "info", text: "Maintain steady vocal energy during technical segments." });
 
     // Textual Insight
     if (results.textAnalysis?.overall_score > 75) insights.push({ type: "positive", text: "Answer clarity and logical structure are significantly high." });
@@ -49,41 +49,41 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20 mb-12">
           {/* Main Overall Score */}
-          <CircularScore 
-            score={results.finalScore} 
-            label="Overall" 
-            size={180} 
-            strokeWidth={12} 
-            color="#10b981" 
+          <CircularScore
+            score={results.finalScore}
+            label="Overall"
+            size={180}
+            strokeWidth={12}
+            color="#10b981"
             glowColor="rgba(16, 185, 129, 0.4)"
           />
 
           <div className="flex items-center gap-8 lg:gap-12 pb-4 overflow-x-auto w-full md:w-auto justify-center">
-            {/* Audio Score */}
-            <CircularScore 
-              score={results.audioScore} 
-              label="Audio" 
-              size={120} 
-              strokeWidth={8} 
-              color="#06b6d4" 
-              glowColor="rgba(6, 182, 212, 0.3)"
-            />
             {/* Video Score */}
-            <CircularScore 
-              score={results.videoScore} 
-              label="Video" 
-              size={120} 
-              strokeWidth={8} 
-              color="#f59e0b" 
+            <CircularScore
+              score={results.videoScore}
+              label="Video"
+              size={120}
+              strokeWidth={8}
+              color="#f59e0b"
               glowColor="rgba(245, 158, 11, 0.3)"
             />
+            {/* Audio Score */}
+            <CircularScore
+              score={results.audioScore}
+              label="Audio"
+              size={120}
+              strokeWidth={8}
+              color="#06b6d4"
+              glowColor="rgba(6, 182, 212, 0.3)"
+            />
             {/* Text Score */}
-            <CircularScore 
-              score={results.textAnalysis?.overall_score || 0} 
-              label="Text" 
-              size={120} 
-              strokeWidth={8} 
-              color="#a855f7" 
+            <CircularScore
+              score={results.textAnalysis?.overall_score || 0}
+              label="Text"
+              size={120}
+              strokeWidth={8}
+              color="#a855f7"
               glowColor="rgba(168, 85, 247, 0.3)"
             />
           </div>
@@ -92,8 +92,8 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
         {/* Bottom Summary Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-border/30">
           <SummaryBox label="Combined Score" score={results.finalScore} color="#10b981" />
-          <SummaryBox label="Audio Analysis" score={results.audioScore} color="#06b6d4" />
           <SummaryBox label="Video Analysis" score={results.videoScore} color="#f59e0b" />
+          <SummaryBox label="Audio Analysis" score={results.audioScore} color="#06b6d4" />
           <SummaryBox label="Text Analysis" score={results.textAnalysis?.overall_score || 0} color="#a855f7" />
         </div>
       </div>
@@ -116,20 +116,20 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-background/50 rounded-2xl p-4 border border-border/50 text-center">
                   <div className="flex items-center justify-center gap-2 text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-2">
-                    <Mic className="h-3 w-3 text-blue-500" />
-                    Audio Tone
-                  </div>
-                  <div className="text-xl font-bold text-foreground">
-                    {results.crossModalAlignment.audio_emotion}
-                  </div>
-                </div>
-                <div className="bg-background/50 rounded-2xl p-4 border border-border/50 text-center">
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-2">
                     <Video className="h-3 w-3 text-emerald-500" />
                     Facial Expression
                   </div>
                   <div className="text-xl font-bold text-foreground">
                     {results.crossModalAlignment.facial_emotion}
+                  </div>
+                </div>
+                <div className="bg-background/50 rounded-2xl p-4 border border-border/50 text-center">
+                  <div className="flex items-center justify-center gap-2 text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-2">
+                    <Mic className="h-3 w-3 text-blue-500" />
+                    Audio Tone
+                  </div>
+                  <div className="text-xl font-bold text-foreground">
+                    {results.crossModalAlignment.audio_emotion}
                   </div>
                 </div>
               </div>
@@ -148,9 +148,9 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
             </div>
 
             <div className="shrink-0 flex items-center justify-center">
-              <CircularScore 
+              <CircularScore
                 score={Math.round(results.crossModalAlignment.consistency_score)}
-                label="" 
+                label=""
                 size={160}
                 strokeWidth={12}
                 color={results.crossModalAlignment.score >= 75 ? '#10b981' : '#f97316'}
@@ -316,6 +316,21 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
         </div>
 
         <div className="space-y-32">
+          {/* Video Section */}
+          <section id="video-analysis" className="scroll-mt-32">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                <Video className="h-6 w-6" />
+              </div>
+              <h3 className="text-2xl font-bold">Video Performance Analysis</h3>
+            </div>
+            <VisualTab
+              rubrics={results.videoAnalysis.rubrics}
+              metrics={results.videoAnalysis}
+              overallScore={results.videoScore}
+            />
+          </section>
+
           {/* Audio Section */}
           <section id="audio-analysis" className="scroll-mt-32">
             <div className="flex items-center gap-4 mb-8">
@@ -324,69 +339,12 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
               </div>
               <h3 className="text-2xl font-bold">Audio Performance Analysis</h3>
             </div>
-            <VocalTab 
-              rubrics={results.audioAnalysis.rubrics} 
-              metrics={results.audioAnalysis} 
+            <VocalTab
+              rubrics={results.audioAnalysis.rubrics}
+              metrics={results.audioAnalysis}
               overallScore={results.audioScore}
               timelineData={results.timelineData}
             />
-            {/* Model Metrics for Audio */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-6 flex items-center gap-5">
-                <div className="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 shrink-0">
-                  <Activity className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-indigo-500/60 mb-1">Model: semiSER-CNN v2.1</div>
-                  <div className="text-sm font-bold">88.4% Audio Accuracy</div>
-                </div>
-              </div>
-              <div className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-6 flex items-center gap-5">
-                <div className="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 shrink-0">
-                  <Clock className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-indigo-500/60 mb-1">Inference Latency</div>
-                  <div className="text-sm font-bold">420ms Parallel Processing</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Video Section */}
-          <section id="video-analysis" className="scroll-mt-32">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                <Video className="h-6 w-6" />
-              </div>
-              <h3 className="text-2xl font-bold">Video & Presence Analysis</h3>
-            </div>
-            <VisualTab 
-              rubrics={results.videoAnalysis.rubrics} 
-              metrics={results.videoAnalysis} 
-              overallScore={results.videoScore}
-            />
-            {/* Model Metrics for Video */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-2xl p-6 flex items-center gap-5">
-                <div className="h-12 w-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
-                  <CheckCircle className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-emerald-500/60 mb-1">Model: Swin-Transformer</div>
-                  <div className="text-sm font-bold">91.2% Facial Accuracy</div>
-                </div>
-              </div>
-              <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-2xl p-6 flex items-center gap-5">
-                <div className="h-12 w-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
-                  <Info className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-emerald-500/60 mb-1">Tracking Stability</div>
-                  <div className="text-sm font-bold">Adaptive Global Sampling</div>
-                </div>
-              </div>
-            </div>
           </section>
 
           {/* Text Section */}
@@ -395,30 +353,9 @@ const OverviewTab = ({ results }: OverviewTabProps) => {
               <div className="h-12 w-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-500">
                 <MessageSquare className="h-6 w-6" />
               </div>
-              <h3 className="text-2xl font-bold">Textual Content Analysis</h3>
+              <h3 className="text-2xl font-bold">Text Performance Analysis</h3>
             </div>
-            <TextTab data={results.textAnalysis} />
-            {/* Model Metrics for Text */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-purple-500/5 border border-purple-500/10 rounded-2xl p-6 flex items-center gap-5">
-                <div className="h-12 w-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 shrink-0">
-                  <MessageSquare className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-purple-500/60 mb-1">Model: Llama 3.1 (Groq)</div>
-                  <div className="text-sm font-bold">Linguistic Content Analysis</div>
-                </div>
-              </div>
-              <div className="bg-purple-500/5 border border-purple-500/10 rounded-2xl p-6 flex items-center gap-5">
-                <div className="h-12 w-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 shrink-0">
-                  <Clock className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-purple-500/60 mb-1">Response Latency</div>
-                  <div className="text-sm font-bold">Ultra-low TBT Optimization</div>
-                </div>
-              </div>
-            </div>
+            <TextTab data={results.textAnalysis} showDatasetInfo={false} showPerformanceResults={true} />
           </section>
         </div>
       </div>
