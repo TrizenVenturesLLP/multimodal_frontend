@@ -205,9 +205,9 @@ const Dashboard = () => {
                 </div>
               </div>
               <h3 className="text-3xl font-bold mb-4">Deep Behavioral Analysis</h3>
-              <p className="text-muted-foreground max-w-md mx-auto mb-8">
-                Our AI PhDs are synchronized and processing your data across all three modalities.
-              </p>
+              <p className="text-muted-foreground max-w-md mx-auto">
+              Your analysis is being processed across all three modalities.
+            </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl px-4">
                 {[
