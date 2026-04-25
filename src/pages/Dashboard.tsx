@@ -75,7 +75,31 @@ const Dashboard = () => {
         xhr.send(formData);
       });
 
-      const data: any = await responsePromise;
+      const initialData: any = await responsePromise;
+      const jobId = initialData.job_id;
+      
+      // Polling for results
+      let data: any = null;
+      const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8010";
+      
+      while (true) {
+        const pollResponse = await fetch(`${API_BASE_URL}/api/multimodal/results/${jobId}`);
+        const pollData = await pollResponse.json();
+        
+        if (pollData.status === "completed") {
+          data = pollData;
+          break;
+        } else if (pollData.status === "failed") {
+          throw new Error(`Analysis failed: ${pollData.error}`);
+        }
+        
+        // Update phase description if we have steps
+        if (pollData.step) {
+          // You could add a setProgressMessage(pollData.step) here if you added that state
+        }
+        
+        await new Promise(r => setTimeout(r, 4000)); // Poll every 4s
+      }
 
       // Map backend data to UI structure
       const finalMetrics = Object.entries(data.rubric_scores || {}).map(([name, val]: [string, any]) => ({
@@ -86,8 +110,6 @@ const Dashboard = () => {
 
       const audioRubrics = data.individual_analysis.audio.rubrics || {};
       const videoRubrics = data.individual_analysis.video.rubrics || {};
-      const audioKeys = Object.keys(audioRubrics);
-      const videoKeys = Object.keys(videoRubrics);
 
       setResults({
         finalScore: Math.round(data.multimodal_score),
@@ -117,9 +139,9 @@ const Dashboard = () => {
           overall_score: Math.round(data.individual_analysis.text.overall_score || 0),
           behavioral: data.individual_analysis.text.behavioral
         },
-        aiFeedback: data.ai_feedback,
+        aiFeedback: data.overall_feedback,
         evidenceLog: data.evidence_log || [],
-        crossModalAlignment: data.cross_modal_alignment,
+        crossModalAlignment: data.alignment_score,
         timelineData: data.timeline_data || [],
         transcription: data.transcription,
         qaPairs: data.qa_pairs
