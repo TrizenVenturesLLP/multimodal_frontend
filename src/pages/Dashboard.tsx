@@ -70,7 +70,8 @@ const Dashboard = () => {
           }
         };
         xhr.onerror = () => reject(new Error("Network error during upload"));
-        xhr.open("POST", "http://localhost:8010/api/multimodal/analyze");
+      const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8010";
+      xhr.open("POST", `${API_BASE_URL}/api/multimodal/analyze`);
         xhr.send(formData);
       });
 
