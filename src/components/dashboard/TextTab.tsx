@@ -118,13 +118,13 @@ const TextTab = ({
                     Topic Competency Scores
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {Object.entries(data.rubrics || {}).map(([name, score]) => (
+                    {Object.entries(data.rubrics || {}).map(([name, metric]: [string, any]) => (
                         <div key={name} className="p-4 rounded-2xl bg-secondary/20 border border-border/10 group hover:border-primary/20 transition-all">
                             <div className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 truncate group-hover:text-foreground">
                                 {name.replace("Textual ", "")}
                             </div>
                             <div className="flex items-end gap-2">
-                                <span className="text-2xl font-black text-primary leading-none">{Math.round(Number(score) || 0)}</span>
+                                <span className="text-2xl font-black text-primary leading-none">{Math.round(Number(metric?.score) || 0)}</span>
                                 <span className="text-[10px] font-bold text-muted-foreground mb-1">/100</span>
                             </div>
                         </div>
