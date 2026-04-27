@@ -78,10 +78,6 @@ const VisualTab = ({
                                         <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Dominant</span>
                                         <span className="text-sm font-black text-primary">{metrics.dominant}</span>
                                     </div>
-                                    <div className="flex justify-between items-center p-3 rounded-xl bg-secondary/30 border border-border/20">
-                                        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Focus Score</span>
-                                        <span className="text-sm font-black text-emerald-500">{behavioral.eye_contact_pct > 80 ? 'Exceptional' : 'Steady'}</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
