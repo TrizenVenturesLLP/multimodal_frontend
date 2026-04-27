@@ -77,7 +77,7 @@ const TextTab = ({
                 </div>
                 <div>
                     <h3 className="text-xl font-bold tracking-tight">Text Analysis</h3>
-                    <p className="text-xs text-muted-foreground">Textual depth and semantic analysis</p>
+                    <p className="text-xs text-muted-foreground">Textual analysis and semantic mapping</p>
                 </div>
             </div>
 

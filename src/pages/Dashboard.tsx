@@ -213,7 +213,7 @@ const Dashboard = () => {
                 {[
                   { icon: Video, label: "Video Analysis", color: "text-emerald-500", bg: "bg-emerald-500/10" },
                   { icon: Mic, label: "Audio Analysis", color: "text-blue-500", bg: "bg-blue-500/10" },
-                  { icon: MessageSquare, label: "Textual Depth", color: "text-purple-500", bg: "bg-purple-500/10" }
+                  { icon: MessageSquare, label: "Textual Analysis", color: "text-purple-500", bg: "bg-purple-500/10" }
                 ].map((m, i) => (
                   <div key={i} className={`p-4 rounded-2xl ${m.bg} border border-${m.color.split('-')[1]}-500/20 flex flex-col items-center gap-3`}>
                     <m.icon className={`h-6 w-6 ${m.color} animate-bounce`} style={{ animationDelay: `${i * 0.2}s` }} />

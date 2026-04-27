@@ -19,7 +19,7 @@ const TechnicalFooter = () => {
               Multimodal Intelligence Architecture
             </h3>
             <p className="text-[11px] text-muted-foreground leading-relaxed font-medium opacity-80">
-              Our clinical-grade pipeline performs time-synchronized feature extraction across vocal acoustics, facial geometry, and textual depth.
+              Our clinical-grade pipeline performs time-synchronized feature extraction across vocal acoustics, facial geometry, and textual analysis.
             </p>
           </div>
 
