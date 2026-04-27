@@ -294,7 +294,7 @@ const Dashboard = () => {
                     <p className="text-muted-foreground">
                       {activeTab === 'text-analysis' || activeTab === 'audio-analysis' || activeTab === 'video-analysis'
                         ? 'Quantitative evaluation of model performance, reliability and research methodology' 
-                        : <>Comprehensive behavioral intelligence for <span className="text-primary font-bold">{results.filename || "Session"}</span></>}
+                        : <>Comprehensive behavioral Analysis for <span className="text-primary font-bold">{results.filename || "Session"}</span></>}
                     </p>
                   </div>
 
