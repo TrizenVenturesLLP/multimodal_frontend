@@ -70,7 +70,7 @@ const Dashboard = () => {
           }
         };
         xhr.onerror = () => reject(new Error("Network error during upload"));
-      const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8010";
+      const API_BASE_URL = import.meta.env.VITE_API_URL || "https://multimodal-backend.llp.trizenventures.com";
       xhr.open("POST", `${API_BASE_URL}/api/multimodal/analyze`);
         xhr.send(formData);
       });
@@ -80,7 +80,7 @@ const Dashboard = () => {
       
       // Polling for results
       let data: any = null;
-      const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8010";
+      const API_BASE_URL = import.meta.env.VITE_API_URL || "https://multimodal-backend.llp.trizenventures.com";
       
       while (true) {
         const pollResponse = await fetch(`${API_BASE_URL}/api/multimodal/results/${jobId}`);
