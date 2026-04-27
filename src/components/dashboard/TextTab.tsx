@@ -39,7 +39,7 @@ const TextTab = ({
   }
 
   const behavioral = data?.behavioral || { vocab_level: 'Intermediate', avg_response_length: 0, filler_pct: 0 };
-  const clarity = data?.rubrics?.["Textual Clarity"] || 0;
+  const clarity = data?.rubrics?.Clarity?.score || data?.rubrics?.["Textual Clarity"]?.score || 0;
 
   const fmtTime = (sec: number) => {
     const m = Math.floor(sec / 60);
