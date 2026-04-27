@@ -109,7 +109,7 @@ const TextTab = ({
             <div className="md:col-span-1 bg-card rounded-3xl p-8 border shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden group">
                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-4">Text Rating</div>
-                <div className="text-6xl font-black text-primary mb-2">{Math.round(data.overall_score)}</div>
+                <div className="text-6xl font-black text-primary mb-2">{Math.round(data.overall_score || 0)}</div>
                 <div className="text-xs font-bold text-muted-foreground">Overall Depth</div>
             </div>
             <div className="md:col-span-3 bg-card rounded-3xl p-8 border shadow-sm">
@@ -118,13 +118,13 @@ const TextTab = ({
                     Topic Competency Scores
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {Object.entries(data.rubrics).map(([name, score]) => (
+                    {Object.entries(data.rubrics || {}).map(([name, score]) => (
                         <div key={name} className="p-4 rounded-2xl bg-secondary/20 border border-border/10 group hover:border-primary/20 transition-all">
                             <div className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 truncate group-hover:text-foreground">
                                 {name.replace("Textual ", "")}
                             </div>
                             <div className="flex items-end gap-2">
-                                <span className="text-2xl font-black text-primary leading-none">{Math.round(score)}</span>
+                                <span className="text-2xl font-black text-primary leading-none">{Math.round(Number(score) || 0)}</span>
                                 <span className="text-[10px] font-bold text-muted-foreground mb-1">/100</span>
                             </div>
                         </div>
@@ -186,8 +186,8 @@ const TextTab = ({
                               {metricName}
                           </span>
                         </div>
-                        <span className={`text-sm font-black ${metricData.score > 70 ? 'text-emerald-500' : metricData.score < 50 ? 'text-orange-500' : 'text-primary'}`}>
-                          {metricData.score}
+                        <span className={`text-sm font-black ${(Number(metricData.score) || 0) > 70 ? 'text-emerald-500' : (Number(metricData.score) || 0) < 50 ? 'text-orange-500' : 'text-primary'}`}>
+                          {Math.round(Number(metricData.score) || 0)}
                         </span>
                       </div>
                       <p className="text-[11px] text-muted-foreground leading-relaxed mt-2 italic">
