@@ -3,7 +3,7 @@ import { Mic, Activity, ShieldCheck, BarChart2, Clock, RefreshCcw, Settings, Lay
 
 const AudioDatasetMetrics = () => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -53,7 +53,7 @@ const AudioDatasetMetrics = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Proposed Hybrid Model Methodology Section Header */}
       <div className="flex items-center gap-4 mb-8">
         <div className="h-px flex-1 bg-border/40" />
@@ -198,28 +198,28 @@ const AudioDatasetMetrics = () => {
           </h4>
           <ul className="space-y-4">
             <li className="flex items-start gap-3">
-                <div className="h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Activity className="h-3 w-3 text-emerald-500" />
-                </div>
-                <div className="text-xs text-muted-foreground">
-                    <strong>Resampling:</strong> Standardized all signals to <strong>22050 Hz</strong> to maintain uniform frequency resolution.
-                </div>
+              <div className="h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Activity className="h-3 w-3 text-emerald-500" />
+              </div>
+              <div className="text-xs text-muted-foreground">
+                <strong>Resampling:</strong> Standardized all signals to <strong>22050 Hz</strong> to maintain uniform frequency resolution.
+              </div>
             </li>
             <li className="flex items-start gap-3">
-                <div className="h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Activity className="h-3 w-3 text-emerald-500" />
-                </div>
-                <div className="text-xs text-muted-foreground">
-                    <strong>Standardization:</strong> Padded or trimmed all audio files to a fixed length for uniform model input size.
-                </div>
+              <div className="h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Activity className="h-3 w-3 text-emerald-500" />
+              </div>
+              <div className="text-xs text-muted-foreground">
+                <strong>Standardization:</strong> Padded or trimmed all audio files to a fixed length for uniform model input size.
+              </div>
             </li>
             <li className="flex items-start gap-3">
-                <div className="h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Activity className="h-3 w-3 text-emerald-500" />
-                </div>
-                <div className="text-xs text-muted-foreground">
-                    <strong>Chunking:</strong> Divided long-duration files into consistent 3-second segments to optimize learnability.
-                </div>
+              <div className="h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Activity className="h-3 w-3 text-emerald-500" />
+              </div>
+              <div className="text-xs text-muted-foreground">
+                <strong>Chunking:</strong> Divided long-duration files into consistent 3-second segments to optimize learnability.
+              </div>
             </li>
           </ul>
         </div>
@@ -231,25 +231,25 @@ const AudioDatasetMetrics = () => {
           </h4>
           <div className="space-y-4">
             <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10">
-                <div className="flex justify-between items-center mb-1">
-                    <span className="text-[10px] font-black uppercase text-blue-500">MFCC</span>
-                    <span className="text-[9px] text-muted-foreground">Spectral Properties</span>
-                </div>
-                <p className="text-[10px] text-muted-foreground italic">Mimics human auditory perception via Mel-Frequency Cepstral Coefficients.</p>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[10px] font-black uppercase text-blue-500">MFCC</span>
+                <span className="text-[9px] text-muted-foreground">Spectral Properties</span>
+              </div>
+              <p className="text-[10px] text-muted-foreground italic">Mimics human auditory perception via Mel-Frequency Cepstral Coefficients.</p>
             </div>
             <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10">
-                <div className="flex justify-between items-center mb-1">
-                    <span className="text-[10px] font-black uppercase text-blue-500">Zero Crossing Rate</span>
-                    <span className="text-[9px] text-muted-foreground">Noisiness & Transitions</span>
-                </div>
-                <p className="text-[10px] text-muted-foreground italic">Measures frequency of sign changes in the signal waveform.</p>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[10px] font-black uppercase text-blue-500">Zero Crossing Rate</span>
+                <span className="text-[9px] text-muted-foreground">Noisiness & Transitions</span>
+              </div>
+              <p className="text-[10px] text-muted-foreground italic">Measures frequency of sign changes in the signal waveform.</p>
             </div>
             <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10">
-                <div className="flex justify-between items-center mb-1">
-                    <span className="text-[10px] font-black uppercase text-blue-500">RMS Energy</span>
-                    <span className="text-[9px] text-muted-foreground">Loudness/Energy</span>
-                </div>
-                <p className="text-[10px] text-muted-foreground italic">Represents the average signal amplitude and perceived loudness.</p>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[10px] font-black uppercase text-blue-500">RMS Energy</span>
+                <span className="text-[9px] text-muted-foreground">Loudness/Energy</span>
+              </div>
+              <p className="text-[10px] text-muted-foreground italic">Represents the average signal amplitude and perceived loudness.</p>
             </div>
           </div>
         </div>
@@ -322,11 +322,11 @@ const AudioDatasetMetrics = () => {
                 This confusion matrix is computed on the test dataset, reflecting the model’s ability to generalize to unseen data. Overall, the semi-supervised model demonstrates balanced performance across all seven emotion classes, with no single class being significantly underrepresented in prediction accuracy.
               </p>
             </div>
-            
+
             <div className="p-6 rounded-3xl bg-emerald-500/5 border border-emerald-500/10">
-                <p className="text-xs text-muted-foreground leading-relaxed italic">
-                    "The model's ability to handle imbalanced benchmark data while maintaining high precision across all classes validates our semi-supervised learning approach."
-                </p>
+              <p className="text-xs text-muted-foreground leading-relaxed italic">
+                "The model's ability to handle imbalanced benchmark data while maintaining high precision across all classes validates our semi-supervised learning approach."
+              </p>
             </div>
           </div>
           <div className="space-y-6">
@@ -358,16 +358,16 @@ const AudioDatasetMetrics = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <p className="text-sm text-muted-foreground leading-relaxed">
-              This module maps low-level emotion predictions extracted from audio into high-level behavioral and communication rubrics. 
+              This module maps low-level emotion predictions extracted from audio into high-level behavioral and communication rubrics.
               The detected emotions (Angry, Disgust, Fear, Happy, Neutral, Sad, Surprise) are processed to derive meaningful soft-skill indicators such as <strong>Sentiment, Professionalism, Emotional Stability, Engagement, Calmness, Emotional Intensity, Vocal Confidence, Vocal Engagement, and Stress/Tension</strong>.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
               This transformation enables the system to move beyond raw emotion detection and provide interpretable, human-centric evaluation metrics that reflect real-world communication performance.
             </p>
             <div className="p-6 rounded-3xl bg-primary/5 border border-primary/10">
-                <p className="text-xs text-muted-foreground leading-relaxed italic">
-                    "Bridging the gap between acoustic signals and professional competencies through intelligent metric derivation."
-                </p>
+              <p className="text-xs text-muted-foreground leading-relaxed italic">
+                "Bridging the gap between acoustic signals and professional competencies through intelligent metric derivation."
+              </p>
             </div>
           </div>
           <div className="relative rounded-3xl overflow-hidden border border-border/40 shadow-2xl group bg-white p-4 flex items-center justify-center">
@@ -450,6 +450,60 @@ const AudioDatasetMetrics = () => {
               alt="Confidence Threshold Analysis"
               className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
             />
+          </div>
+        </div>
+      </div>
+
+      {/* Inter-Rater Reliability */}
+      <div className="bg-card/30 border border-border/40 rounded-[2.5rem] p-8">
+        <h4 className="text-sm font-bold mb-8 flex items-center gap-2">
+          <Activity className="h-4 w-4 text-emerald-500" />
+          Inter-Rater Reliability Evaluation
+        </h4>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <div>
+              <h5 className="text-2xl font-black text-foreground mb-4">Inter-Rater Reliability (Cohen's Kappa)</h5>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                To evaluate the consistency of our acoustic rubrics across different evaluations, we calculated <strong>Cohen's Kappa</strong> for each behavioral metric. The results demonstrate strong alignment across categories, validating the reliability of our feature extraction.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-center">
+                <div className="text-[9px] font-black uppercase text-emerald-500 mb-1">Peak Agreement</div>
+                <div className="text-lg font-black">0.87</div>
+                <div className="text-[8px] text-muted-foreground">Vocal Engagement</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-secondary/20 border border-border/10 text-center">
+                <div className="text-[9px] font-black uppercase text-muted-foreground mb-1">Baseline</div>
+                <div className="text-lg font-black">0.79</div>
+                <div className="text-[8px] text-muted-foreground">Vocal Confidence</div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-secondary/10 border border-border/20">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                The reliability curve maintains a strong baseline above <strong>0.79</strong>, peaking at <strong>0.87</strong> for complex metrics like Vocal Engagement. This high consensus confirms that our audio evaluation rubrics provide stable and reproducible outcomes.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden border border-border/40 shadow-2xl group bg-white p-6">
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 to-transparent pointer-events-none" />
+              <img
+                src="/audio/interrater.png"
+                alt="Inter-Rater Reliability Graph"
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-102"
+              />
+              <div className="mt-4 text-center border-t border-border/20 pt-4">
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center justify-center gap-2">
+                  <Activity className="h-3 w-3" />
+                  Inter-Rater Reliability Metrics
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

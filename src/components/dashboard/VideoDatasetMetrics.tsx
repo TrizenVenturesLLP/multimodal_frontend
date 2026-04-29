@@ -325,6 +325,59 @@ const VideoDatasetMetrics = () => {
           </div>
         </div>
       </div>
+
+      {/* Inter-Rater Reliability */}
+      <div className="bg-card/30 border border-border/40 rounded-[2.5rem] p-8">
+        <h4 className="text-sm font-bold mb-8 flex items-center gap-2">
+          <Activity className="h-4 w-4 text-indigo-500" />
+          Inter-Rater Reliability Evaluation
+        </h4>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <div>
+              <h5 className="text-2xl font-black text-foreground mb-4">Inter-Rater Reliability (Cohen's Kappa)</h5>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                To evaluate the consistency of the rubrics across different evaluations, we calculated <strong>Cohen's Kappa</strong> for each behavioral metric. The results demonstrate strong and progressive alignment across categories.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 text-center">
+                <div className="text-[9px] font-black uppercase text-indigo-500 mb-1">Peak Agreement</div>
+                <div className="text-lg font-black">0.84</div>
+                <div className="text-[8px] text-muted-foreground">Overall Quality</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-secondary/20 border border-border/10 text-center">
+                <div className="text-[9px] font-black uppercase text-muted-foreground mb-1">Baseline</div>
+                <div className="text-lg font-black">0.75</div>
+                <div className="text-[8px] text-muted-foreground">Confidence</div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-secondary/10 border border-border/20">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                The reliability curve consistently trends upward, ranging from <strong>0.75 to 0.84</strong>. This high degree of consensus affirms that the evaluation rubrics provide stable and reproducible outcomes across diverse assessment scenarios.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden border border-border/40 shadow-2xl group bg-white p-6">
+              <img
+                src="/video/interrater.png"
+                alt="Inter-Rater Reliability Graph"
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-102"
+              />
+              <div className="mt-4 text-center border-t border-border/20 pt-4">
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center justify-center gap-2">
+                  <Activity className="h-3 w-3" />
+                  Graph 1: Inter-Rater Reliability Metrics
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 };
